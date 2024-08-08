@@ -61,6 +61,7 @@ function Freebook() {
               name={item.name}
               image={item.image}
               title={item.title}
+              price={item.price}
               category={item.category
              
               }
