@@ -1,12 +1,8 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 
-<<<<<<< HEAD
 // eslint-disable-next-line react/prop-types
 function Cards({ category, name, title, price, image }) {
-=======
-
-function Cards({ category,name,title,price,image }) {
->>>>>>> b65a06e84297fc9796cfac89c5657e1eb71b30c1
 
   if (!title) {
     return null; // Skip rendering if title is missing
@@ -38,8 +34,4 @@ function Cards({ category,name,title,price,image }) {
 }
 
 export default Cards;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> b65a06e84297fc9796cfac89c5657e1eb71b30c1

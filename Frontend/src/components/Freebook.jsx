@@ -7,7 +7,6 @@ import list from "../../public/list.json";
 
 function Freebook() {
   const filterData = list.filter((item) => item.category === "Free");
-
   const settings = {
     dots: true,
     infinite: false,

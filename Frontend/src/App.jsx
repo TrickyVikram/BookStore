@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-<<<<<<< HEAD
+
 import Home from "./home/Home";
 import { Route, Routes } from "react-router-dom";
 import Courses from "./courses/Courses";
@@ -15,7 +15,7 @@ import Cards from "./components/Cards";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
->>>>>>> b65a06e84297fc9796cfac89c5657e1eb71b30c1
+
 function App() {
   return (
     <>
