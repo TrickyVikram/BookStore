@@ -1,11 +1,20 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
-    title: {
+
+    id: {
+        type: Number,
+        required: true,
+    },
+    name: {
         type: String,
         required: true,
     },
-    author: {
+    image: {
+        type: String,
+        required: true,
+    },
+    title: {
         type: String,
         required: true,
     },
@@ -17,7 +26,7 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    publishedDate: {
+   createDate: {
         type: Date,
         default: Date.now,
     }

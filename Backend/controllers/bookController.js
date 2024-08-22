@@ -6,6 +6,7 @@ const Book = require('../models/bookModel');
 const getBooks = async (req, res) => {
     try {
         const books = await Book.find();
+        console.log(books);
         res.json(books);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -16,12 +17,14 @@ const getBooks = async (req, res) => {
 // @route   POST /api/books
 // @access  Public
 const createBook = async (req, res) => {
-    const { title, author, price, category } = req.body;
+    const { id, name, title, image, price, category } = req.body;
     const book = new Book({
+        id,
+        name,
         title,
-        author,
         price,
         category,
+        image
     });
 
     try {
@@ -51,7 +54,7 @@ const getBookById = async (req, res) => {
 // @route   PUT /api/books/:id
 // @access  Public
 const updateBook = async (req, res) => {
-    const { title, author, price, category } = req.body;
+    const { id, name, title, price, category, image } = req.body;
 
     try {
         const book = await Book.findById(req.params.id);
@@ -60,10 +63,12 @@ const updateBook = async (req, res) => {
             return res.status(404).json({ message: 'Book not found' });
         }
 
+        book.id = id || book.id;
+        book.name = name || book.name;
         book.title = title || book.title;
-        book.author = author || book.author;
         book.price = price || book.price;
         book.category = category || book.category;
+        book.image = image || book.image;
 
         const updatedBook = await book.save();
         res.json(updatedBook);
@@ -91,13 +96,11 @@ const deleteBook = async (req, res) => {
 };
 
 // @desc    Test
-const test = (req,res) => {
-
-   return res.send('Test');
-
-}
-
-
+// @route   GET /api/test
+// @access  Public
+const test = (req, res) => {
+    return res.send('Test');
+};
 
 module.exports = {
     getBooks,

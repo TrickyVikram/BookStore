@@ -1,3 +1,5 @@
+// Main app file (app.js or server.js)
+
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
@@ -18,6 +20,12 @@ app.use(express.json());
 // Routes
 app.use('/api/books', bookRoutes);
 
+// Define the test route independently
+app.get('/api/test', (req, res) => {
+    res.send('Test');
+});
+
+// Home route
 app.get('/', (req, res) => {
     res.send('<h1  style="text-align: center;"    >Welcome to BookStore API</h1>');
 });
