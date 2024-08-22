@@ -90,10 +90,20 @@ const deleteBook = async (req, res) => {
     }
 };
 
+// @desc    Test
+const test = (req,res) => {
+
+   return res.send('Test');
+
+}
+
+
+
 module.exports = {
     getBooks,
     createBook,
     getBookById,
     updateBook,
     deleteBook,
+    test
 };
