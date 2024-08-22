@@ -1,36 +1,25 @@
-// Main app file (app.js or server.js)
-
 const express = require('express');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const bookRoutes = require('./routes/bookRoutes');
 const connectDB = require('./config/db');
+const bookRoutes = require('./routes/bookRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 // Load environment variables
 dotenv.config();
 
-const app = express();
-
 // Connect to MongoDB
 connectDB();
+
+const app = express();
 
 // Middleware
 app.use(express.json());
 
 // Routes
 app.use('/api/books', bookRoutes);
+app.use('/api/users', authRoutes);
 
-// Define the test route independently
-app.get('/api/test', (req, res) => {
-    res.send('Test');
-});
-
-// Home route
-app.get('/', (req, res) => {
-    res.send('<h1  style="text-align: center;"    >Welcome to BookStore API</h1>');
-});
-
-// Error Handling Middleware (Optional)
+// Error handling middleware (optional)
 app.use((err, req, res, next) => {
     res.status(500).json({ message: err.message });
 });
