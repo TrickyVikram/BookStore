@@ -6,7 +6,6 @@ const Book = require('../models/bookModel');
 const getBooks = async (req, res) => {
     try {
         const books = await Book.find();
-        console.log(books);
         res.json(books);
     } catch (error) {
         res.status(500).json({ message: error.message });

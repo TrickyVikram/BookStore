@@ -2,6 +2,8 @@ const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
+const dotenv = require('dotenv');
+
 
 // @desc Register a new user
 // @route POST /api/users/register
@@ -68,7 +70,10 @@ const loginUser = async (req, res) => {
         const payload = { user: { id: user.id } };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.json({ token });
+        let userObj = user.toObject();
+
+        res.json({ token, user: userObj });
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -85,5 +90,12 @@ const getMe = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// Generate JWT token
+
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+};
+
 
 module.exports = { registerUser, loginUser, getMe };
