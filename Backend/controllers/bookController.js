@@ -99,7 +99,7 @@ const deleteBook = async (req, res) => {
 // @route   GET /api/test
 // @access  Public
 const test = (req, res) => {
-    return res.send('Test');
+    return res.send( {message: 'Test API'} );
 };
 
 module.exports = {
